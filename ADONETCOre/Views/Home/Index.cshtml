@@ -1,0 +1,62 @@
+﻿@model IEnumerable<ADONETCOre.Models.Customers>
+
+@{
+    ViewData["Title"] = "Cusotmers";
+}
+<div>
+
+
+
+    <table class="table">
+        <thead>
+
+            <tr>
+                @using (Html.BeginForm("SearchCustomer", "Home", FormMethod.Post))
+                {
+                    <p>
+                        Customer Id: <input type="text" name="CustomerId" />
+                        <input type="submit" value="Search" class="btn btn-primary" /> |
+                        <input type="submit" formaction="Index" value="Show All" class="btn btn-success" />
+                    </p>
+                }
+
+
+            </tr>
+            <tr>
+                <th>
+                    @Html.DisplayName("No")
+                </th>
+                <th>
+                    @Html.DisplayName("Customer name")
+                </th>
+                <th>
+                    @Html.DisplayName("Mobile Number")
+                </th>
+                <th>
+                    @Html.DisplayName("Email Address")
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+
+                        @Html.DisplayFor(modelItem => item.CustomerId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Customername)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Mobile)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EmailAddress)
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+</div>
